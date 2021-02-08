@@ -1,0 +1,41 @@
+\RequirePackage[utf8]{inputenc}
+ \RequirePackage[T1, T2A]{fontenc}
+\RequirePackage[english, russian]{babel}
+\RequirePackage{caption}
+\RequirePackage{indentfirst}
+\RequirePackage{graphicx, xcolor}
+\RequirePackage{cmap}
+
+%\RequirePackage{concrete}
+
+\RequirePackage[unicode, pdftex]{hyperref}
+\hypersetup{linkcolor=blue, urlcolor=blue, colorlinks=true}
+\RequirePackage{hyphenat}
+\hyphenation{объект}
+\RequirePackage{wrapfig}
+\RequirePackage[left=1.4cm,right=1.4cm,top=1.5cm,bottom=1.5cm,bindingoffset=0cm]{geometry}
+\RequirePackage{tocloft}    
+\RequirePackage{titlesec} \titlelabel{\thetitle.\quad} 
+\frenchspacing
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+\makeindex
+
+\RequirePackage[]{mathtools}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+    
+\parindent=1.25cm
+%\parskip=0.1cm
+
+\RequirePackage{physics} 
+\RequirePackage{siunitx} % typesets numbers with units very nicely
+\RequirePackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+\DeclareMathOperator{\sign}{sgn}
+\RequirePackage{amsthm}
+
+%\RequirePackage[dvips]{graphicx}
+
+\RequirePackage{multicol}
+
+\bibliographystyle{unsrt}

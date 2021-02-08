@@ -1,0 +1,578 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{abridgement}
+\begin{document}
+\section{Обзор основных понятий и законов классической механики}
+\subsection{Механика как часть теоретической физики}
+Общая (экспериментальная) физика основана на принципе индукции и поставляет теоретической физике математические модели (физические законы). Теоретическая физика использует дедукцию и возвращает общей физике предсказания результатов экспериментов.
+
+\begin{dfn} Механика --- наука о движении материальных объектов в пространстве и времени. \end{dfn}
+Откажемся от определения, в котором сложно объяснить слова в правой части, и будем перечислять...
+\begin{enumerate}
+\item Пространство и время независимы.
+\item Пространство трёхмерно, евклидово, однородно, изотропно.
+\item Время однородно, однонаправленно (?).
+\end{enumerate}
+С точки зрения современной физики эти положения неверны, но это представления классической физики. А как сделать их более корректными?
+\begin{enumerate}
+\item СТО $v \ll c$.
+\item КМ $\Delta l \gg \frac{\hbar}{p}$ --- длина волны де Бройля.
+\item ОТО $m \varphi \ll mc^2$, $\varphi$ --- потенциал.
+\item ВВ $t \gg t_{BB}$.
+\end{enumerate}
+
+\begin{dfn}
+Материальная точка --- тело, размерами которого при рассмотрении данного класса движения можно пренебречь.
+\end{dfn}
+\begin{dfn}
+Абсолютно твёрдое тело --- набор материальных точек, расстояния между которыми не изменяются.
+\end{dfn}
+
+\begin{task}[Задача Кэлли (?)] \index{Задача Кэлли}Какое минимальное количество связей между материальными точками необходимо установить, чтобы их система обрела жёсткость? \end{task}
+
+\subsection{Механика системы материальных точек}
+\begin{equation*}
+\vb{r}(t) = \{x(t), y(t), z(t) \}; \thickspace \mathop{\{\vb{r}_i(t)\}}\limits_{i = \overline{1{,}N}}
+\end{equation*}  
+
+\subsubsection{Кинематика материальной точки.}
+$\vb{r}(t)$ --- закон движения (иногда знаем траекторию и положение точки для любого момента времени). 
+\begin{align*}
+\vb{r} &= r \vb{e}_r = \sqrt{x^2 + y^2 + z^2} \vb{e}_r, \\
+\vb{e}_r &= \frac{\vb{r}}{r} = \left\{ \frac{x}{\sqrt{x^2 + y^2 + z^2}}, \frac{y}{\sqrt{x^2 + y^2 + z^2}}, \frac{z}{\sqrt{x^2 + y^2 + z^2}} \right\};\\
+\vb{v} &= \dv{\vb{r}}{t} = \left\{\dot x, \dot y, \dot z\right\},\\
+\vb{v} &= v \vb*{\tau}.
+\end{align*}
+
+\paragraph{Криволинейные координаты.}\index{Координаты! криволинейные}
+\begin{align*}
+q &= (q_1, q_2, q_3), x =X(q, t), y = Y(q, t), z =Z(q, t) \Rightarrow \\
+q(t) &\Rightarrow \vb{r}(t) = \vb{r}{\vb{q}(t), t} = \left\{X(q(t), t), Y(q(t), t), Z(q(t), t)\right\}; \\
+\vb{v}(t) &= \dv{\vb{r}}{t} = \sum \pdv{\vb{r}}{q_i} \dot q_i + \pdv{\vb{r}}{t}; \\
+\vb{v}_i &= \left\{\pdv{X}{q_i} \dot q_i, \pdv{Y}{q_i} \dot q_i, \pdv{Z}{q_i} \dot q_i \right\}.
+\end{align*}
+
+\begin{equation*}
+\vb{v} = \sum v_i \vb{e}_i; (e_i, e_j) = \delta_{ij} \Rightarrow v^2 = v_1^2 + v_2^2 + v_3^2
+\end{equation*}
+
+\begin{ex}[Цилиндрические координаты] \index{Координаты! цилиндрические} Пусть $q = (\varphi, \rho, z),$ и
+\begin{equation*}
+\begin{cases}
+x = \rho \cos \varphi   \\
+y = \rho \sin \varphi \\
+z,
+\end{cases}
+\end{equation*}
+тогда
+\begin{equation*}
+\vb{v} = \dv{t} \left\{\rho \cos \varphi, \rho \sin \varphi, z \right\} \Rightarrow
+\end{equation*}
+\begin{equation*}
+\begin{cases}
+\vb{v}_{\varphi} = \rho \dot \varphi \underbrace{\{-\sin \varphi, \cos \varphi, 0\}}_{\vb{e}_\varphi} \\
+\vb{v}_\rho = \dot \rho \underbrace{\{\cos \varphi, \sin \varphi, 0\}}_{\vb{e}_\rho} \\
+\vb{v}_z = \dot z \{0, 0, 1\},
+\end{cases}
+\end{equation*}
+значит, 
+\begin{equation*}
+(\vb{e}_\rho, \vb{e}_\varphi) = 0.
+\end{equation*}
+\end{ex}
+
+\paragraph{Ускорение.}\index{Ускорение}\index{Ускорение}
+\begin{align*}
+\vb{a} & \eqdef \dv{\vb{v}}{t} = \dv[2]{\vb{r}}{t} = \left\{\ddot{x}, \ddot{y}, \ddot{z} \right\} \\
+\vb{a} &= \dv{t} (v \vb*{\tau}) = \dot{v} \vb*{\tau} + \underbrace{v \dot{\vb*{\tau}}}_{= \frac{v^2}{R} \vb{n}} \\
+\vb{n} &= \frac{\dot{\vb{r}}}{\dot{\vb*{\tau}}}\\
+\abs{\dot{\vb*{\tau}}} &= \frac{v}{R}\\
+[\vb*{\tau}, \vb{n}] &= \vb{b} \thickspace \text{--- бинормаль --- по ней не может быть направлено ускорение.}
+\end{align*}
+
+
+\subsubsection{Основные постулаты ньютоновской механики.}
+Сразу отметим, что количество точек в системе может быть бесконечным, или даже несчётным.
+
+\begin{enumerate}
+\item[0.] Пространство $+$ Время классические (однонаправленность времени не учитываем).
+\item Первый закон Ньютона: \index{Законы Ньютона! первый} существуют инерциальные системы отсчёта, в которых изолированная точка движется равномерно и прямолинейно.
+
+Добавим принцип относительности Галилея, чтобы не возникало выделенных направлений из-за введения системы отсчёта: законы движения инвариантны относительно преобразования Галилея в замкнутой системе. Преобразование Галилея\index{Преобразование Галилея}:
+\begin{equation}
+\begin{cases}
+t = t'\\
+\vb{r'} = \vb{r} + \vb{u}t, \qquad \vb{u} = const.
+\end{cases}
+\label{Galilean_tr}
+\end{equation}
+Система \eqref{Galilean_tr} порождает бесконечный класс инерциальных систем, и однородность восстанавливается.
+
+\item Второй закон Ньютона. \index{Законы Ньютона! второй} Принцип детерминизма Ньютона <<сидит>> в порядке дифференциальных уравнений для описания динамики системы.
+\begin{equation*}
+\Ddot{\vb{r}}_i = \vb{f}_i (\vb{r}_1, \dots, \vb{r}_N, \vb{v}_1, \dots, \vb{v}_N, t) 
+\end{equation*}
+$6N$ свободных констант --- по две на каждую степень свободы.
+\begin{equation*}
+\begin{cases}
+\vb{r}_i (t_0) = {\vb{r}_i}_0\\
+\vb{v}_i (t_0) = {\vb{v}_i}_0,
+\end{cases}
+\end{equation*}
+существует, правда, множество меры нуль всяких исключений: диссипативные состояния равновесия, например.
+
+Второй закон Ньютона:
+\begin{equation}
+m_i \ddot{\vb{r}}_i = \vb{F}_i \left(\{\vb{r}_i\}, \{\dot{\vb{r}}_i\}, t\right).
+\label{Newton's_2nd_law}
+\end{equation}
+Отметим, что уравнение \eqref{Newton's_2nd_law} работает в инерциальных системах отсчёта, $m_i$ --- характеристика материальной точки, не зависящая от движения.
+
+Экспериментальный способ измерения:
+\begin{equation*}
+\begin{cases}
+m_1 a_1 = F\\
+m_2 a_2 = F
+\end{cases}
+\Rightarrow \; \frac{m_1}{m_2} = \frac{a_2}{a_1}, \qquad
+\begin{cases}
+ma_1 = F_1\\
+ma_2 = F_2
+\end{cases}
+\Rightarrow \; \frac{F_1}{F_2} = \frac{a_1}{a_2}.
+\end{equation*}
+\paragraph{Импульс.}
+\begin{align*}
+\vb{p}_i & \eqdef m_i \vb{v}_i && \text{--- импульс,}\\
+\vb{M}_i & \eqdef m_i [\vb{r}_i, \vb{v}_i] && \text{--- момент импульса,}\\
+\vb{N}_i & \eqdef [\vb{r}_i, \vb{F}_i] && \text{--- момент силы.}\index{Момент! силы} \index{Момент! импульса}
+\end{align*}
+
+\begin{cex}
+Могут быть патологические случаи.
+$m(t)$ --- ракета и реактивная сила или, например, тележка с тающим льдом: включаем массу в систему --- система с сохраняющейся массой, а потом смотрим на динамику подсистем. $\vb{F}$ может зависеть от разных других вещей, когда мы пытаемся описать механическим немеханические явления: $m(\dot{\vb{r}})$ --- квазиклассические частицы в твёрдом теле, тела в СТО, $m(\ddot{\vb{r}})$ --- присоединённая масса в гидродинамике, $F(\dddot{\vb{r}})$~--- радиационное трение~--- электрон летает вокруг ядра по боровской  орбите, излучает электромагнитные волны как любой движущийся заряд, теряя таким образом энергию, и падает на ядро, нарушается принцип детерминизма Ньютона --- пытаемся описать электромагнитную задачу механическим языком.
+\end{cex}
+
+\item
+Третий закон Ньютона. \index{Законы Ньютона! третий}Чтобы его определить, придётся все силы разбить на внутренние и внешние.
+\begin{equation*}
+\vb{F}_i = \vb{F}_i^{(e)} (t, \vb{r}_i) + \sum \vb{F}_{ij}^{(i)} (t, \vb{r}_i, \vb{r}_j), 
+\end{equation*}
+внешняя сила может зависеть только от координаты точки (и времени), а все оставшиеся силы~--- внутренние. Для <<всех оставшихся>>  предположили, что каждая из точек действует на $i$-ю точку независимо от всех остальных. И обрываем ряд, то есть считаем, что силы, в которой есть $\vb{r}_i$  и $\vb{r}_j$, $\vb{r}_k$ уже нет~--- приближение парных взаимодействий, и третий закон Ньютона справедлив только при  его применении. Формулировка третьего закона Ньютона: \index{Законы Ньютона! третий}
+
+\begin{figure}[h]\centering
+\def\svgwidth{9cm}
+\input{pic3.pdf_tex}
+\end{figure}
+                                                                      
+\begin{equation}
+\begin{cases}
+\vb{F}_{ij}^{(i)} + \vb{F}_{ji}^{(i)} = 0 \label{3d_N's-law}\\
+[\vb*{\rho}_{ij}, \vb{F}_{ij}] = 0 
+\end{cases}
+\end{equation}
+
+
+\begin{cex}
+Третий закон Ньютона справедлив только для объектов, которые являются материальными точками, но существуют объекты нулевого размера, не являющиеся материальными точками: например, электрический диполь, у которого есть вращающий момент, который может ещё и энергию забирать...
+\end{cex}
+\begin{cns}
+
+
+\begin{enumerate}
+\item \begin{equation*}
+ \vb{F} = \sum \limits_{i = 1}^N \vb{F}_i^{(e)} = \vb{F}^{(e)} \Rightarrow \left( \sum m_i \right) \cdot \vb{\ddot{R}} = \vb{F} = \vb{F}^{(e)}, \vb{R} = \frac{\sum m_i \vb{r}_i}{\sum m_i},\index{Центр масс}
+\end{equation*}
+то есть центр масс системы материальных точек  с попарным взаимодействием движется так же, как одна точка с суммарной массой системы в поле равнодействующей всех внешних сил.
+\begin{ex}
+Центр масс двигавшегося по параболе и разорвавшегося в некоторой точке снаряда продолжит движение по параболе.
+\end{ex}
+\begin{cex}
+У Карлсона, летящего по параболе, раскрылся парашют...
+\end{cex} 
+\item \begin{equation*}
+\vb{N} = \sum \vb{N}_i = \sum \vb{N}_i^{(e)},
+\end{equation*}
+то есть суммарный момент сил, действующих на систему с попарным взаимодействием, равен суммарному моменту внешних сил. Как это можно доказать?
+\begin{equation}
+[\vphantom{\vb{F}_{j}}\vb{r}_i, \vb{F}_{ij}] + [\vphantom{\vb{F}_{j}}\vb{r}_j, \vb{F}_{ji}] = [\vphantom{\vb{F}_{j}}\vb{r}_i - \vb{r}_j, \vb{F}_{ij}] = 0, \label{ftr_3d_N's-law}
+\end{equation}
+то есть сначала воспользовались первой часть третьего закона Ньютона \eqref{3d_N's-law}, чтобы поменять знак, а потом --- второй, чтобы приравнять к нулю.
+\end{enumerate}
+\end{cns}
+\end{enumerate}
+\newpage
+\subsubsection{Законы сохранения в механике Ньютона.}
+\subparagraph{Закон сохранения импульса.} \index{Закон сохранения! импульса}
+
+\begin{gather*}
+\vb{p} \eqdef \sum m_i \vb{v}_i \Rightarrow\\
+\dot{\vb{p}} = \vb{F} = \vb{F}^{(e)},
+\end{gather*}
+первый переход осуществлён в силу II закона Ньютона, второй --- III закона Ньютона.
+\begin{equation*}
+\vb{p} = const \Leftarrow \sum \vb{F}_i^{(e)} = 0,
+\end{equation*}
+согласно III закону Ньютона.
+
+\subparagraph{Закон сохранения момента импульса.} \index{Закон сохранения! момента импульса}
+\begin{gather*}
+\vb{M} \eqdef \sum m_i [\vb{r}_i, \vb{v}_i];\\
+\dot{\vb{M}} = \sum m_i \bigl\{ [\vb{r}_i, \dot{\vb{v}}_i] + [\dot{\vb{r}_i}, \vb{v}] \bigr\} = \vb{N} = \vb{N}^{(e)};\\
+\begin{cases}
+\sum \vb{N}_i^{(e)} = 0,\\
+\text{III закон Ньютона}
+\end{cases}
+\Rightarrow \vb{M} = const
+\end{gather*}
+\subparagraph{Закон сохранения энергии.} \index{Закон сохранения! энергии! для одной материальной точки}
+\begin{gather*}
+m \ddot{\vb{r}} = \vb{F} \qquad |\cdot \vb{v} \Rightarrow\\
+m \vb{v} \dv{\vb{v}}{t} = m \left( v_x \dot{v}_x + v_y \dot{v}_y + v_z \dot{v}_z \right) = \frac{m}{2} \cdot2 \dv{t} \left( v_x^2 + v_y^2 + v_z^2 \right) = \dv{T}{t} \Rightarrow\\
+T = \frac{mv^2}{2} 
+\end{gather*}
+\begin{figure}[h]\centering
+\def\svgwidth{7cm}
+\input{pic4.pdf_tex}
+\caption{Траектория материальной точки.}
+\end{figure}
+\begin{gather}
+\dv{T}{t} = \vb{F} \cdot \vb{v}\\
+\int \limits_{t_1}^{t_2} \dv{T}{t} \, dt = T(2) - T(1) = \int \limits_{t_1}^{t_2} \vb{F} \cdot \underbrace{\vb{v} \, dt}_{d \vb{r}} = \int \limits_{\vb{r}_1}^{\vb{r}_2} \vb{F} \, d\vb{r} = \int \limits_1^2 \, dA
+\end{gather}
+
+
+\begin{dfn}
+Сила является потенциальной, если существует потенциал $U(\vb{r}, t)$.\index{Сила! потенциальная}
+\begin{gather}
+\vb{F} = - \dv{U}{\vb{r}} = \left\{ -\pdv{U}{x}, -\pdv{U}{y}, -\pdv{U}{z} \right\} = -\nabla U\\
+rot \, \vb{F} \equiv 0 \Leftrightarrow [\vphantom{\vb{F}} \nabla, \vb{F}] = 0,
+\end{gather}
+но вся эта наука справедлива в односвязной стягиваемой области. Если сила потенциальная, то 
+\begin{equation*}
+\oint \vb{F} (\tau, r)\, d\vb{r} = 0
+\end{equation*}
+\end{dfn}
+\begin{dfn}
+\begin{equation}
+\pdv{U}{t} = 0 \Rightarrow \text{сила консервативная (стационарная потенциальная).}
+\end{equation}
+\end{dfn}
+\begin{dfn}
+\begin{gather}
+dA = 0,\\
+\intertext{значит, сила гироскопическая (сила Кориолиса, магнитная составляющая силы Лоренцa).} \index{Сила! гироскопическая}
+\left(\vb{F}, \vb{v}\right) = 0
+\end{gather}
+\end{dfn}
+\begin{dfn}
+Диссипативная сила:\index{Сила! диссипативная}
+\begin{equation}
+dA < 0
+\end{equation}
+\begin{ex}
+\begin{equation}
+\vb{F} = -k (t, \vb{r}, \vb{v}) \cdot \vb{v}, \quad k>0
+\end{equation}
+\end{ex}
+\end{dfn}
+Запишем выражение для силы $\vb{F}$, используя введённые определения и считая, что они покрывают все силы:
+\begin{equation}
+\vb{F} = - \nabla  U (\vb{r}, t) + \vb{F}_g + \vb{F}_d
+\end{equation}
+Введём понятие полной энергии:
+\begin{equation}
+T + U = E.
+\end{equation}
+Получим дифференциалы потенциальной и кинетической энергии:
+\begin{gather}
+\dv{T}{t} = - \pdv{U}{\vb{r}} \vb{v} + \vb{F}_d \cdot \vb{v}; \label{dT}\\
+\dv{U}{t} = \pdv{U}{t} + \pdv{U}{\vb{r}} \dot{\vb{r}}; \label{dU}
+\end{gather}
+Сложим \eqref{dT} и \eqref{dU}:
+\begin{equation}
+\dv{E}{t} = \pdv{U}{t} + \vb{F}_d \cdot \vb{v},
+\end{equation}
+то есть для выполнения закона сохранения энергии требуется, чтобы все потенциальные силы были консервативными, и отсутствовали диссипативные силы, а полная энергия материальной точки может изменяться за счёт работы диссипативных сил и работы потенциальных неконсервативных сил.
+
+\subparagraph{Закон сохранения энергии для системы материальных точек.} \index{Закон сохранения! энергии! для системы материальных точек}
+\begin{gather}
+m_i \ddot{\vb{r}}_i  = \vb{F}_i \qquad |\cdot \vb{v}_i, \sum\limits_i \quad i = \overline{1, N}\\
+\dv{T}{t} = \sum \limits_{i=1}^N \vb{F}_i \vb{v}_i ; \quad T = \sum \limits_{i=1}^N \frac{m_i v_i^2}{2}\\
+\vb{F}_i = \vb{F}_i^{(e)} + \sum_{i \neq j} \vb{F}_{ij}\\
+\vb{F}_i^{(e)} = - \pdv{U^{(e)} (\vb{r}_i)}{\vb{r}_i} + \vb{F}^{(e)}_{g\;i} + \vb{F}^{(e)}_{d\;i}, 
+\end{gather}
+то есть для каждой внешней силы проделали то же, что делали в случае одной материальной точки. И посчитаем:
+\begin{gather}
+\sum  \vb{F}_i^{(e)} \cdot \vb{v}_i = - \sum \pdv{U^{(e)}}{\vb{r}_i} \cdot \dot{\vb{r}}_i + \sum  \vb{F}_{d\;i}^{(e)} \cdot \vb{v}_i, \label{sum_F^e}\\
+\intertext{введём $U^{(e)}$:}
+U^{(e)} = \sum_{i=1}^N U^{(e)}_i (\vb{r}_i), \text{тогда}\\
+\dv{U^{(e)}}{t} = \sum \pdv{U^{(e)}}{\vb{r}_i} \cdot \dot{\vb{r}}_i + \pdv{U^{(e)}}{t}. \label{dU^e}\\
+\intertext{Выразим первое слагаемое в правой части \eqref{sum_F^e} из  \eqref{dU^e} и соберём полные производные энергии по времени вместе:}
+\dv{t}\left(T + U^{(e)}\right) = \pdv{U^{(e)}}{t} +  \sum  \vb{F}_{d\;i}^{(e)} \cdot \vb{v}_i.
+\end{gather}
+
+\begin{gather}
+U_{ij} = U_{ij} (\abs{\vb{r}_j - \vb{r}_i}) = U_{ij} (\rho_{ij}) \Rightarrow U_{ij} = U_{ji};\\
+\vb{F}_i = - \pdv{U_{ij}}{\vb*{\rho}_{ij}} \pdv{\vb*{\rho}_{ij}}{\vb{r}_i} = + \pdv{U_{ij}(\vb*{\rho}_{ij})}{\vb*{\rho}_{ij}}, \vb{F}_j = - \pdv{U_{ij}}{\vb*{\rho}_{ij}} \pdv{\vb*{\rho}_{ij}}{\vb{r}_j} = - \pdv{U_{ij}(\vb*{\rho}_{ij})}{\vb*{\rho}_{ij}};
+\end{gather}
+\begin{gather}
+\vb{F}_{ij} = - \pdv{\vb{r}_i} U_{ij} (\vb{r}_i, \vb{r}_j);\\
+\sum_{\substack{i, j\\ i \neq j}} \vb{F}_{ij} \cdot \vb{v}_i =\sum (\underbrace{\vb{v}_i - \vb{v}_j}_{-\dot{\vb*{\rho}}_{ij}} ) \pdv{U_{ij}}{\vb*{\rho}_{ij}} = -\dv{t} U^{(i)};
+\end{gather}
+\begin{gather}
+U^{(i)} = \frac{1}{2} \sum_{\substack{i, j = 1\\ i \neq j}}^N U^{(i)} (\vb*{\rho}_{ij}) \Rightarrow\\
+\boxed{\dv{t}(T + U^{(e)} + U^{(i)}) = \pdv{U^{(e)}}{t} + \sum \vb{F}_{d\; i}^{(e)}\vb{v}_i}
+\end{gather}
+\newpage
+З.\,С.\,Э. $E = const$:
+\begin{enumerate}
+\item Внешние силы консервативные и/или гироскопические.
+\item Нет диссипативных сил.
+\item Внутренние силы специальной структуры: отвечают глобальным законам симметрии пространства. $U^{(i)}(\abs{\vb{r}_i - \vb{r}_j})$.
+\end{enumerate}
+\begin{ex}
+\begin{equation*}
+E_{\text{Л}} = - e \nabla \varphi + \frac{e}{c} [\vb{v}, \vb{B}]
+\end{equation*}
+\end{ex}
+\subparagraph{Интеграл движения.}\index{Интеграл движения}
+\begin{equation}
+I(t, {\vb{r}_i}, {\vb{v}_i}) = const
+\end{equation}
+
+\begin{equation*}
+ \dv{E}{t} = \pdv{U}{t} + \vec{v} \cdot \vec{F}_d
+ \end{equation*}
+ Помимо законов сохранения есть и другие интегралы движения; каждый ЗС и интеграл движения понижают порядок уравнения движения на единицу. 
+ 
+ \subparagraph{Теорема Нётер}\index{Теорема! Нётер}
+Некоторая симметрия $\Rightarrow$ инвариант.
+ \begin{ex}
+ \begin{gather*}
+ \begin{cases}
+ \vb{F} = \frac{\alpha}{x^2 + y^2} \vb*{\tau}, \\
+ \vb*{\tau} = \{-y, x, 0\},\\
+ x = R \cos{\omega t},\\
+ y = R \sin{\omega t},\\
+ z =0 
+ \end{cases}
+ \Rightarrow\\
+ A = \frac{\alpha}{R^2} \int\limits_0^T(\vb*{\tau}, \vb{v})\, dt =   \frac{\alpha}{R^2} \int\limits_0^T (R^2 \omega \sin^2{\omega t} + R^2 \omega \cos^2{\omega t}) \, dt = \frac{\alpha}{R^2} R^2 \omega \int\limits_0^T \, dt = \alpha \omega T = 2 \pi \alpha
+ \end{gather*}
+ \end{ex}
+ 
+\subsection{Теорема о вириале} \index{Теорема! о вириале}
+Теорема вириале даёт \textit{приближённые} соотношения.
+\begin{dfn}
+Финитное движение --- движение в ограниченной области пространства с ограниченными скоростями.
+\begin{equation*}
+\abs{\vec{r}_i}, \abs{\vec{v}_i} < const
+\end{equation*}
+\end{dfn}
+
+\begin{dfn}
+Средний.
+\begin{equation}
+f(t) \rightarrow \expval{f} = \frac{1}{\tau} \int\limits_{t-\frac{\tau}{2}}^{t+\frac{\tau}{2}} f(t')\, dt',
+\end{equation}
+где $\tau$ --- время усреднения.
+\end{dfn}
+
+\begin{ex}
+Движение в груза в гармоническом осцилляторе финитно.
+\begin{gather*}
+m\ddot{x} + \kappa x = 0;\\
+F_x = -\kappa \dot{x};\\
+x = A \cos{\omega t + \varphi};\\
+U = \frac{\kappa x^2}{2},\quad \expval{U} = \frac{1}{4} \kappa A^2.
+\end{gather*}
+А если не исключать трение, то появится <<добавка>>:
+\begin{gather}
+F_{\text{тр}} = - \mu \dot{x},\\
+m\ddot{x} + \mu\dot{x} + kx = 0.
+\end{gather}
+\end{ex}
+
+\begin{dfn}[Характерное время системы]
+\begin{equation}
+\tau_0 = \frac{f}{\dot{f}}
+\end{equation}
+\end{dfn}
+
+\begin{dfn}[Однородная функция]
+Функция $f(x_1, x_2, \dots, x_n)$ называется однородной с порядком однородности $k$, если
+\begin{equation}
+f(\alpha x_1, \dots, \alpha x_n) = \alpha^k f(x_1,  \dots, x_n) \; \text{при}\, \forall \alpha.
+\end{equation}
+\end{dfn}
+
+\begin{lem}[Лемма Эйлера (об однородной функции)]
+Для того, чтобы дифференцируемая функция   $f(x_1 , x_2, \dots, x_n)$  была однородной функцией с порядком однородности   $k$ необходимо и достаточно выполнение соотношения Эйлера
+\begin{equation}
+\sum_{i=1}^n \pdv{f}{x_i} x_i = kf. \label{Euler-eq} 
+\end{equation}
+\end{lem}
+\begin{proof}
+Необходимость можно получить, продифференцировав \eqref{Euler-eq} при $\alpha = 1$: в левой части получим
+\begin{equation*}
+\pdv{\alpha} f(\alpha \vb{x}) = \pdv{f(\alpha \vb{x})}{\vb{x}} \left. \dv{(\alpha x)}{\alpha} \right|_{\alpha = 1} = \pdv{f}{x} x,
+\end{equation*}
+а в правой --- $kf$.
+
+Для доказательства достаточности возьмём функцию   $ \varphi (\alpha)=\alpha ^{-k}f(\alpha x_{1},\alpha x_{2}, \dots ,\alpha x_{n})$ при фиксированных $x_1 , x_2, \dots, x_n$ и продифференцируем её по  $\alpha$: 
+\begin{equation*}
+\varphi'(\alpha) = - k \alpha^{-k-1} f(\alpha x_{1},\alpha x_{2}, \dots ,\alpha x_{n}) + \alpha ^{-k} \sum_{i=1}^n \pdv{f}{x_i} x_i.
+\end{equation*}
+Тогда в силу того, что 
+\begin{equation*}
+\sum_{i=1}^n \pdv{f(\alpha\vb{x})}{(\alpha x_i)} x_i = k f(\alpha x_{1},\alpha x_{2}, \dots ,\alpha x_{n}),
+\end{equation*}
+получим, что $\varphi'(\alpha) = 0$, значит, $\varphi(\alpha) = const$, а эту константу найдём, рассмотрев случай $\alpha =1$: $\varphi(1) = f(x_1,  \dots, x_n)$. Следовательно, 
+\begin{equation*}
+\alpha^k \varphi(\alpha) = f(\alpha x_{1},\alpha x_{2}, \dots ,\alpha x_{n}) = \alpha^k f(x_1,  \dots, x_n). \qedhere
+\end{equation*}
+\end{proof}
+
+Перейдём непосредственно к теореме о вириале. Рассмотрим финитное движение в поле консервативных сил для одной материальной точки. Верно ли, что при сохранении энергии движение обязательно периодическое? В одномерном случае любое консервативное финитное движение обязательно периодическое (уровень энергии ограничивает доступную зону), а в многомерном случае это неверно: простейшим примером служат независимые колебания по двум  различным направлениям с несоизмеримыми периодами (подвесим грузик на двум перпендикулярных пружинках разной жёсткости: при рациональном отношении периодов получим фигуры Лиссажу, при иррациональном~--- заметённый квадрат).
+
+\begin{thm}[Теорема о вириале] Рассмотрим несколько ограничений.
+\begin{enumerate}
+\item $\abs{\vec{r}_i}, \abs{\vec{v}_i} < \infty,$ то есть движение финитное.
+\item $\vb{F} = - \grad U(\vec{r}\,)$ --- сила, действующая на материальную точку, консервативная. \label{potential}
+\item $U(\alpha \vec{r}) = \alpha^k\,U(\vec{r}\,) $ --- сила описывается однородным потенциалом с порядком однородности $k$. \label{homogeneity}
+\item $\tau = T, \text{либо}\; \tau \gg \tau_0, \text{либо}\; \tau \sim \tau_0\; \text{и}\; \mathop{\Delta T}\limits_{\tau_0} \ll T,$ то есть усреднение происходит либо по периоду, если движение периодическое, либо по времени, которое много больше времени системы, либо по времени порядка характерного времени системы, но при этом изменение кинетической энергии за это время мало.
+\end{enumerate}
+
+\noindent Если соблюдены указанные выше условия, то справедливо следующее усреднённое равенство:
+\begin{equation}
+\expval{T} \approx \frac{k}{2} \expval{U}.
+\end{equation}
+Эквивалентные формы:
+\begin{align}
+\expval{T} &\approx \frac{k}{k+2} E,\\
+\expval{U} &\approx \frac{2}{k+2} E. 
+\end{align}
+\end{thm}
+\begin{proof}
+\begin{align}
+T &= \frac{mv^2}{2} = \frac{1}{2} {\vb{p} \vb{v}} = \frac{1}{2} {\vb{p}  \dot{\vb{r}}} = \dv{t} \left( \frac{1}{2} \vb{p}  \vb{r} \right) - \frac{1}{2} \dot{\vb{p}}  \vb{r} =  \dv{t} \left(\frac{1}{2} \vb{p}  \vb{r} \right) - \frac{1}{2} \vb{F} \cdot \vb{r} \notag\\
+\expval{T} &= -\frac{1}{2} \expval{\vb{F} \vb{r}} + \left. \frac{1}{2\tau} \vb{p} \vb{r} \right|_{t-\frac{\tau}{2}}^{t+\frac{\tau}{2}} \label{expval_T}
+\end{align}
+Скалярное произведение в первом слагаемом правой части уравнения \eqref{expval_T} принято называть вириалом или вириалом Клаузиуса. \index{Вириал! Клаузиуса} Покажем, что пункт 4 условия теоремы позволяет пренебречь  <<добавкой>> --- вторым слагаемым.
+\begin{itemize}
+\item[$\tau = T$] Периодическое движение в с периодом $T$ --- подстановка даёт ноль, и равенство даже не приближённое, а строгое.
+\item[$\tau \rightarrow \infty$] При математически бесконечном времени усреднения добавка устремляется к нулю.
+\item[$\tau \gg \tau_0$] Физически бесконечное время усреднения. Оценим $\vec{p} \cdot \vec{r}$. Оценка, <<как на природоведении в четвёртом классе>>: $v \sim \frac{r}{\tau_0}, \vec{p} \cdot \vec{r} \sim \tau_0 p v, \frac{1}{2} \frac{\tau_0}{\tau} pv = \frac{\tau_0}{\tau} T$. Получили кинетическую энергию умноженную на малый параметр.
+\item[$\tau \sim \tau_0$] Если понять предыдущий пункт, то всё уже просто: второе слагаемое можно оценить как $\frac{1}{2	}\frac{\tau_0}{\tau} \Delta{T}$, а малость изменения кинетической энергии мы предусмотрительно потребовали в условии.
+\end{itemize}
+Запишем полученное приближённое равенство; воспользуемся условиями \ref{potential} и \ref{homogeneity}:
+\begin{equation*}
+\begin{cases}
+\expval{T} \approx - \frac{1}{2} \expval{\vb{F} \vb{r}}\\
+\vb{F} \cdot \vb{r} \is{potential}  -\pdv{U}{\vb{r}} \vb{r} \is{homogeneity} - kU
+\end{cases}
+\Rightarrow \expval{T} \approx \frac{k}{2} \expval U
+\end{equation*}
+\end{proof}
+
+\begin{ex}
+$U = - \frac{\alpha}{r} \Rightarrow k = -1, \expval{T} = -E, \expval{U} = 2E$ --- если в системе возможно финитное движение, то оно отвечает отрицательной полной энергии.
+\end{ex}
+\begin{ex}[Теорема о вириале для слабо диссипативной системы] Несколько изменим условия теоремы о вириале.
+\begin{enumerate}
+\item[2.] $\vb{F} = - \grad U(\vb{r}, t) + \vb{F}_d$
+\item[4.] $\tau \gg \tau_0$, или $\tau \sim \tau_0 \ll \tau_T,\; \tau_T = \tau_0 \frac{T}{\Delta T}.$ 
+\item[5.] $\tau_0 \ll \tau_E$ ($\Delta E \ll E$)
+\end{enumerate}
+\end{ex}
+\begin{proof}
+До вывода приближённого равенства для средней кинетической энергии всё аналогично предыдущему доказательству, дальше изменения:
+\begin{gather*}
+\vb{F} \cdot \vb{r} = \pdv{U}{\vb{r}} \vb{r} + \vb{F}_d \vb{r}  = - kU + \vb{F}_d \vb{r},\\
+\intertext{и последним слагаемымв этом равнестве хотим пренебречь;}
+\frac{E}{\tau_E} \sim \frac{U}{\tau_U} + \frac{r}{\tau_0} F_d \Rightarrow \\
+r F_d \sim \frac{\tau_0}{\tau_E} E \sim \frac{\tau_0}{\tau_E} U \Rightarrow \\
+\expval{T}  \approx \frac{k}{2} \expval{U},
+\expval{T} \approx \frac{k}{k+2} \expval{E}.
+\end{gather*}
+\end{proof}
+\begin{ex}$m\ddot{x} + \mu \dot{x} + kx = 0$
+\begin{gather*}
+\dv{E}{t} = -\mu \dot{x}^2 = - \frac{2\mu}{m} T = \frac{m \dot{x}^2}{2},\\
+k=2 \Rightarrow \expval - \frac{\mu}{m} \expval{E} \Rightarrow\\
+\boxed{\dv{t} \expval{E} = - \frac{\mu}{m} \expval{E}}\\
+\expval{E} = \mathcal{E} \exp{-\frac{\mu}{m}t}
+\end{gather*}
+\end{ex}
+
+\begin{ex}
+$\tau_\varkappa \gg \dfrac{2\pi}{\omega},	\omega^2 = \dfrac{\varkappa}{m}$
+\begin{figure}[H]
+\center{\includegraphics[scale=0.4]{pic5.png}}
+\end{figure}
+\begin{gather*}
+\dv{E}{t} = \pdv{U(tx)}{t} = \pdv{U}{\varkappa} \dv{\varkappa}{t} = \frac{\Dot{\varkappa} x^2}{2},\\
+\expval{\dv{E}{t}} =  \expval{\frac{\Dot{\varkappa}x^2}{2}},\\
+ U = \frac{\varkappa x^2}{2}, \text{при этом} \expval{\frac{\varkappa x^2}{2}} = \frac{\varkappa}{2} \expval{x^2}, \text{так как } \tau_T \gg \tau_0, \text{то есть $\varkappa(t)$ меняется сильно медленнее, а}\\
+\expval{U} = \frac{1}{2} \expval{E} \text{по теореме о вириале},\\
+\expval{\dv{E}{t}} \eqq{\bf{?}} \dv{t}\expval{E} = \frac{\dot{\varkappa}}{\varkappa} \expval{U} = \frac{\dot{\varkappa}}{2 \varkappa} \expval{E} \Rightarrow\\
+\dv{t} \ln{\expval{E}} = \frac{1}{2} \dv{t} \ln{\varkappa} = \dv{t} \ln{\sqrt{\varkappa}} \Rightarrow\\
+\expval{E} = E_0 \sqrt{\frac{\varkappa(t)}{\varkappa_0}} \Rightarrow\\
+\boxed{\frac{\expval{E}}{\omega(t)} \simeq const}
+\end{gather*}
+\end{ex}
+
+\begin{thm}[Теорема о вириале для системы частиц]
+\end{thm}
+\begin{proof}
+Аналогично тому, как это было проделано в доказательстве теоремы о вириале дя одной материальной точки, получим следующее утверждение:
+\begin{equation}
+\expval{T} \approx -\frac{1}{2} \sum\limits_{i=1}^N \vb{F}_i \vb{r}_i, \text{сумма в правой части --- вириал Клаузиуса.}
+\end{equation}
+\begin{gather*}
+\vb{F}_i^{(e)} = - \pdv{\vb{r}}U^{(e)},\\
+\vb{F}_{ij}^{(i)} = -\pdv{U_{ij}^{(i)}}{\vb{r}_i} = \pdv{U_{ij}}{\rho_{ij}},\\
+\sum\limits_{i=1}^{N} \vb{F}_i^{(e)} \vb{r}_i = -\sum\limits_{i=1}^N \pdv{U^{(e)}}{\vb{r}_i} \vb{r}_i = -k^{(e)} U^{(e)},\\
+\sum\limits_{\substack{i=1\\ i \neq j}}^{N} \vb{F}_{ij}^{(i)} \vb{r}_i = -\sum\limits_{i \neq j} \frac{1}{2} \pdv{U^{(i)}_{ij}}{\vb*{\rho}_{ij}} \vb*{\rho}_{ij} = -k^{(i)} U^{(i)}\\
+\boxed{\expval{T} = \frac{k^{(i)}}{2} \expval{U^{(i)}} + \frac{k^{(e)}}{2} \expval{U^{(e)}}}\\
+E = T + U^{(i)} + U^{(e)}
+\end{gather*}
+\end{proof}
+\newpage
+\begin{ex}[Твёрдое тело]
+$$\vb*{\rho}_{ij} = const \Rightarrow U^{(i)} = const, k^{(i)} = 0$$
+$$\boxed{\expval{T} = \frac{k^{(e)}}{2} \expval{U^{(e)}}}$$
+\end{ex}
+
+\begin{ex}[Эргодическая гипотеза]
+$\mathstrut$\\
+\begin{figure}[h!]\centering
+\def\svgwidth{5cm}
+\input{ergodic.pdf_tex}
+\end{figure}
+\begin{gather*}
+\expval{T} =   -\hlf \expval{\sum_i \vb{F}_i \vb{r}_i} = \frac{p}{2} \int\limits_{S_V} \vb{r} \dd{\vb{S}} = \frac{3}{2} pV\\
+\vb{F}_i = -p \dd{\vb{S}_i}, U_i^{(i)} = 0\\
+\oint \vb{r} \dd{\vb{S}} = \int\limits_0^{2\pi} \int\limits_0^\pi aa^2 \sin\theta \dd{\theta} = 4\pi a^3 = 3V \\
+\div\vb{r} = \pdv{x_i}{x_i} \Rightarrow \oint \vb{r} \dd{\vb{S}} = \int \div\vb{r} \dd{V} = 3 \int \dd{V} = 3V.
+\end{gather*}
+\end{ex}
+
+\begin{ex}[Термодинамическое равновесие в звезде]
+Пусть теперь внешних сил нет --- только внутренние. Рассмотрим две звезды одной плотности, но отличающиеся по размерам в два раза. Какая из них горячее?
+\begin{multicols}{3}
+\begin{gather*}
+U^{(e)} = 0,\\
+U^{(i)}_{ij} = -\frac{\alpha}{\rho_{ij}} \Rightarrow k^{(i)} = -1,\\
+ \expval{T} = - \hlf \expval{U^{(i)}},
+\end{gather*}
+\begin{gather*}
+\expval{T} = \frac{3}{2}k_\text{Б} \frac{m}{\mu} T_\star,\\
+\expval{U^{(i)}} = -G \frac{m^2}{R} \Rightarrow\\
+\end{gather*}
+\begin{gather*}
+T_\star \sim \frac{m}{R} \sim R^2 \rho.
+\end{gather*}
+\end{multicols}
+\end{ex}
+\end{document}
